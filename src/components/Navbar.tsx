@@ -37,7 +37,7 @@ export function Navbar() {
               to={l.to}
               className="rounded-lg px-2.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "rounded-lg px-2.5 py-2 text-sm font-medium text-primary" }}
-              activeOptions={{ exact: l.exact ?? false }}
+              activeOptions={{ exact: l.exact }}
             >
               {l.label}
             </Link>
@@ -85,7 +85,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                 activeProps={{ className: "rounded-lg px-3 py-2 text-sm font-medium text-primary" }}
-                activeOptions={{ exact: l.exact ?? false }}
+                activeOptions={{ exact: l.exact }}
               >
                 {l.label}
               </Link>
