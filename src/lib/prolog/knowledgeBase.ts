@@ -181,7 +181,7 @@ ranked(Type, Sorted) :-
 % EXPLANATIONS — "Why this product?" generated entirely by Prolog.
 % ---------------------------------------------------------------------------
 reason(Type, Id, R) :-
-    desired(D), is_tag(Type, Id, _, D), tag_label(D, R).
+    item_tags(Type, Id, Tags), desired(D), is_tag(Type, Id, Tags, D), tag_label(D, R).
 reason(laptop, Id, 'Comfortable battery life') :-
     laptop(Id,_,_,_,_,_,_,_,_,_,B,_,_,_), B >= 80.
 reason(laptop, Id, 'Lightweight & portable') :-
