@@ -53,7 +53,7 @@ export function ThemeSwitcher() {
 export function LanguageSwitcher() {
   const { lang, setLang } = usePreferences();
   const [open, setOpen] = useState(false);
-  const { LANGUAGES } = require("@/lib/i18n") as typeof import("@/lib/i18n");
+
 
   return (
     <div className="relative">
