@@ -128,3 +128,33 @@ export async function getRecommendations(
     }))
     .sort((a, b) => a.rank - b.rank);
 }
+
+export interface CatalogItem {
+  name: string;
+  brand: string;
+  price: number;
+  a: number; // laptop: gaming  | mobile: camera
+  b: number; // laptop: ai      | mobile: gaming
+  c: number; // battery
+}
+
+// Lists the full device catalog with headline scores — computed by Prolog.
+export async function getCatalog(type: DeviceType): Promise<CatalogItem[]> {
+  const pl = await loadProlog();
+  const session = pl.create(2_000_000);
+  await consult(session, `${KNOWLEDGE_BASE}\n`);
+  const rows = await runQuery(
+    session,
+    `catalog(${type}, Name, Brand, Price, A, B, C).`,
+  );
+  return rows
+    .map((r) => ({
+      name: String(r.Name),
+      brand: String(r.Brand),
+      price: Number(r.Price),
+      a: Number(r.A),
+      b: Number(r.B),
+      c: Number(r.C),
+    }))
+    .sort((x, y) => x.price - y.price);
+}

@@ -178,3 +178,11 @@ recommend(Type, Rank, Name, Brand, Price, Score, Why) :-
 laptop_scores(Id, Gaming, Ai, Prog, Battery, Portability, Productivity) :-
     lap_gaming(Id, Gaming), lap_ai(Id, Ai), lap_programming(Id, Prog),
     lap_battery(Id, Battery), lap_portability(Id, Portability), lap_productivity(Id, Productivity).
+
+% --- PUBLIC QUERY: full catalog with headline scores (for Browse page) ------
+catalog(laptop, Name, Brand, Price, A, B, C) :-
+    laptop(Id, Name, Brand, Price, _,_,_,_,_,_,_,_,_,_),
+    lap_gaming(Id, A), lap_ai(Id, B), lap_battery(Id, C).
+catalog(mobile, Name, Brand, Price, A, B, C) :-
+    mobile(Id, Name, Brand, Price, _,_,_,_,_,_,_,_),
+    mob_camera(Id, A), mob_gaming(Id, B), mob_battery(Id, C).
