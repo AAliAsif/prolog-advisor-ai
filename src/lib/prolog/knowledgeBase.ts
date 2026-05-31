@@ -9,6 +9,8 @@
 // =============================================================================
 
 export const KNOWLEDGE_BASE = String.raw`
+:- use_module(library(lists)).
+
 % ---------------------------------------------------------------------------
 % LAPTOP FACTS
 % laptop(Id, Name, Brand, Price, Cpu, RamGB, StorageGB, Gpu, VramGB,
