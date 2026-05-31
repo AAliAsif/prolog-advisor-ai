@@ -148,10 +148,9 @@ match_score(Type, Id, Score) :-
     length(Hits, Count),
     Score is Count * 22.
 
-is_tag(_, _, Tags, brand(B)) :- !, item_brand_in(B, Tags).
-is_tag(Type, Id, _, brand(B)) :- item_brand(Type, Id, B).
+is_tag(Type, Id, _, brand(B)) :- !, item_brand(Type, Id, B).
 is_tag(_, _, Tags, T) :- member(T, Tags).
-item_brand_in(_, _) :- fail.
+
 
 % ---------------------------------------------------------------------------
 % TOTAL SCORE + RANKING
