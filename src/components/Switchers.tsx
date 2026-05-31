@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Palette, Check } from "lucide-react";
 import { usePreferences, THEMES, type ThemeId } from "./PreferencesProvider";
+import { LANGUAGES } from "@/lib/i18n";
 
 export function ThemeSwitcher() {
   const { theme, setTheme, customColor, setCustomColor } = usePreferences();
