@@ -12,6 +12,10 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "../components/Navbar";
+import { PreferencesProvider } from "../components/PreferencesProvider";
+import { AuthProvider } from "../components/AuthProvider";
+import { AIAssistant } from "../components/AIAssistant";
+import "../lib/i18n";
 
 function NotFoundComponent() {
   return (
