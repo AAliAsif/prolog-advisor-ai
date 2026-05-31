@@ -224,13 +224,11 @@ tag_label(value, 'Excellent value for money').
 tag_label(brand(_), 'Matches your preferred brand').
 
 reasons_atom(Type, Id, Atom) :-
-    findall(R, distinct_reason(Type, Id, R), Rs0),
-    take(5, Rs0, Rs),
+    findall(R, reason(Type, Id, R), Rs0),
+    sort(Rs0, Rs1),
+    take(5, Rs1, Rs),
     atomic_list_concat(Rs, '||', Atom).
 
-distinct_reason(Type, Id, R) :-
-    setof(X, reason(Type, Id, X), Set),
-    member(R, Set).
 
 take(0, _, []) :- !.
 take(_, [], []) :- !.
