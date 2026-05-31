@@ -12,14 +12,14 @@ export function Navbar() {
 
   const links = [
     { to: "/", label: t("nav.home"), exact: true },
-    { to: "/features", label: t("nav.features") },
-    { to: "/advisor", label: t("nav.laptop") },
-    { to: "/compare", label: t("nav.compare") },
-    { to: "/career", label: t("nav.career") },
-    { to: "/stores", label: t("nav.stores") },
-    { to: "/dashboard", label: t("nav.dashboard") },
-    { to: "/feedback", label: t("nav.feedback") },
-    { to: "/contact", label: t("nav.contact") },
+    { to: "/features", label: t("nav.features"), exact: false },
+    { to: "/advisor", label: t("nav.laptop"), exact: false },
+    { to: "/compare", label: t("nav.compare"), exact: false },
+    { to: "/career", label: t("nav.career"), exact: false },
+    { to: "/stores", label: t("nav.stores"), exact: false },
+    { to: "/dashboard", label: t("nav.dashboard"), exact: false },
+    { to: "/feedback", label: t("nav.feedback"), exact: false },
+    { to: "/contact", label: t("nav.contact"), exact: false },
   ] as const;
 
   return (
