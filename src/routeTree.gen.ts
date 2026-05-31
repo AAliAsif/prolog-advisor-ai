@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoresRouteImport } from './routes/stores'
 import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as BrowseRouteImport } from './routes/browse'
@@ -26,6 +28,16 @@ const StoresRoute = StoresRouteImport.update({
 const FeedbackRoute = FeedbackRouteImport.update({
   id: '/feedback',
   path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -66,6 +78,8 @@ export interface FileRoutesByFullPath {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/features': typeof FeaturesRoute
   '/feedback': typeof FeedbackRoute
   '/stores': typeof StoresRoute
 }
@@ -76,6 +90,8 @@ export interface FileRoutesByTo {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/features': typeof FeaturesRoute
   '/feedback': typeof FeedbackRoute
   '/stores': typeof StoresRoute
 }
@@ -87,6 +103,8 @@ export interface FileRoutesById {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/features': typeof FeaturesRoute
   '/feedback': typeof FeedbackRoute
   '/stores': typeof StoresRoute
 }
@@ -99,6 +117,8 @@ export interface FileRouteTypes {
     | '/browse'
     | '/career'
     | '/compare'
+    | '/contact'
+    | '/features'
     | '/feedback'
     | '/stores'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +129,8 @@ export interface FileRouteTypes {
     | '/browse'
     | '/career'
     | '/compare'
+    | '/contact'
+    | '/features'
     | '/feedback'
     | '/stores'
   id:
@@ -119,6 +141,8 @@ export interface FileRouteTypes {
     | '/browse'
     | '/career'
     | '/compare'
+    | '/contact'
+    | '/features'
     | '/feedback'
     | '/stores'
   fileRoutesById: FileRoutesById
@@ -130,6 +154,8 @@ export interface RootRouteChildren {
   BrowseRoute: typeof BrowseRoute
   CareerRoute: typeof CareerRoute
   CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  FeaturesRoute: typeof FeaturesRoute
   FeedbackRoute: typeof FeedbackRoute
   StoresRoute: typeof StoresRoute
 }
@@ -148,6 +174,20 @@ declare module '@tanstack/react-router' {
       path: '/feedback'
       fullPath: '/feedback'
       preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -202,6 +242,8 @@ const rootRouteChildren: RootRouteChildren = {
   BrowseRoute: BrowseRoute,
   CareerRoute: CareerRoute,
   CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  FeaturesRoute: FeaturesRoute,
   FeedbackRoute: FeedbackRoute,
   StoresRoute: StoresRoute,
 }
