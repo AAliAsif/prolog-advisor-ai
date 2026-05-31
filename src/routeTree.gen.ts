@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StoresRouteImport } from './routes/stores'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as BrowseRouteImport } from './routes/browse'
@@ -16,6 +18,16 @@ import { Route as AdvisorRouteImport } from './routes/advisor'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StoresRoute = StoresRouteImport.update({
+  id: '/stores',
+  path: '/stores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareRoute = CompareRouteImport.update({
   id: '/compare',
   path: '/compare',
@@ -54,6 +66,8 @@ export interface FileRoutesByFullPath {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/feedback': typeof FeedbackRoute
+  '/stores': typeof StoresRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +76,8 @@ export interface FileRoutesByTo {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/feedback': typeof FeedbackRoute
+  '/stores': typeof StoresRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +87,30 @@ export interface FileRoutesById {
   '/browse': typeof BrowseRoute
   '/career': typeof CareerRoute
   '/compare': typeof CompareRoute
+  '/feedback': typeof FeedbackRoute
+  '/stores': typeof StoresRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/advisor' | '/browse' | '/career' | '/compare'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/advisor'
+    | '/browse'
+    | '/career'
+    | '/compare'
+    | '/feedback'
+    | '/stores'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/advisor' | '/browse' | '/career' | '/compare'
+  to:
+    | '/'
+    | '/about'
+    | '/advisor'
+    | '/browse'
+    | '/career'
+    | '/compare'
+    | '/feedback'
+    | '/stores'
   id:
     | '__root__'
     | '/'
@@ -85,6 +119,8 @@ export interface FileRouteTypes {
     | '/browse'
     | '/career'
     | '/compare'
+    | '/feedback'
+    | '/stores'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,10 +130,26 @@ export interface RootRouteChildren {
   BrowseRoute: typeof BrowseRoute
   CareerRoute: typeof CareerRoute
   CompareRoute: typeof CompareRoute
+  FeedbackRoute: typeof FeedbackRoute
+  StoresRoute: typeof StoresRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/stores': {
+      id: '/stores'
+      path: '/stores'
+      fullPath: '/stores'
+      preLoaderRoute: typeof StoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare': {
       id: '/compare'
       path: '/compare'
@@ -150,6 +202,8 @@ const rootRouteChildren: RootRouteChildren = {
   BrowseRoute: BrowseRoute,
   CareerRoute: CareerRoute,
   CompareRoute: CompareRoute,
+  FeedbackRoute: FeedbackRoute,
+  StoresRoute: StoresRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
